@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jquery Ajax Test</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <script type=text/javascript>
+      $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+      alert("你好");
+      $(function() {
+    $('#calculate').bind('click', function() {
+      $.getJSON($SCRIPT_ROOT + '/_add_numbers', {
+        a: $('input[name="a"]').val(),
+        b: $('input[name="b"]').val()
+      }, function(data) {
+        $("#result").text(data.result);
+      });
+      return false;
+    });
+  });
+    </script>
+   
+
+
+
+
+
+
+</head>
+<body>
+    <h1>Ajax with Jquery</h1>
+    <p><input type=text size=5 name=a> +
+        <input type=text size=5 name=b> =
+        <span id=result>?</span>
+     <p>
+      <form  action=>
+      <button type="submit" href=# id=calculate>calculate server side</button>
+    </form> 
+</body>
+</html>
